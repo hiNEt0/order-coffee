@@ -4,6 +4,14 @@ document.querySelector(".add-button").addEventListener("click", () => {
     let forms = document.querySelectorAll(".beverage");
     let newForm = forms[forms.length - 1].cloneNode(true);
     newForm.querySelector("h4").innerHTML = `Напиток №${count}`;
+
+    let userInput = newForm.querySelector('.user-input');
+    let userOutput = newForm.querySelector('.user-output');
+    userInput.addEventListener('change  ', function() {
+        const userInput = "hello";
+        newOutput.innerHTML = highlightKeywords(userInput);
+    });
+
     for (let radio of newForm.querySelectorAll("input[type=radio]")) {
         radio.name = "milk" + count;
     }
@@ -18,6 +26,12 @@ document.querySelector(".add-button").addEventListener("click", () => {
     });
     forms[forms.length - 1].after(newForm);
 });
+
+function highlightKeywords(text) {
+    const keywords = ['срочно', 'быстрее', 'побыстрее', 'скорее', 'поскорее', 'очень нужно'];
+    const regex = new RegExp(keywords.join('|'), 'gi');
+    return text.replace(regex, match => `<b>${match}</b>`);
+}
 
 const modal = document.querySelector(".modal");
 const modalContent = document.querySelector(".modal-content");
