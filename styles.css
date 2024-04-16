@@ -44,3 +44,48 @@
     border: 2px solid orange;
     border-radius: 5px;
 }
+
+/* .remove-button {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    font-size: 16px;
+    padding: 7px 15px;
+    border-radius: 5px;
+} */
+
+ 
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 640px;
+    padding-top: 22px;
+    background-color: #fff;
+    z-index: 1000;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.modal-content {
+    padding: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
