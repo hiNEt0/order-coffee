@@ -38,6 +38,7 @@ document.querySelector(".submit-button")
         (e) => {
             e.preventDefault();
             modalContent.textContent = `Заказ принят! Вы заказали ${count} ${declineDrink(count)}.`;
+            createTable(modalContent);
             modal.style.display = 'block';
             overlay.style.display = 'block';
         }
@@ -50,3 +51,39 @@ document.querySelector(".close-btn")
             overlay.style.display = 'none';
         }
     );
+
+
+function createTable(element) {
+
+    const table = document.createElement('table');
+    const header = document.createElement('tr');
+    table.appendChild(header);
+    for (const headText of ["Напиток", "Молоко", "Дополнительно"]) {
+        const headerEl = document.createElement('th');
+        headerEl.textContent = headText;
+        header.appendChild(headerEl);
+    }
+    
+    for (const fieldset of document.querySelectorAll('.beverage')) {
+        const row = document.createElement('tr');
+        
+        const dropdown = fieldset.querySelector('select');
+        const dropdownTd = document.createElement('td');
+        dropdownTd.textContent = dropdown.selectedOptions[0].value;
+        row.appendChild(dropdownTd);
+
+        const radio = fieldset.querySelector('input[type="radio"]:checked');
+        const radioTd = document.createElement('td');
+        radioTd.textContent = radio.value;
+        row.appendChild(radioTd);
+
+        const checkboxes = fieldset.querySelectorAll('input[type="checkbox"]:checked');
+        const boxesTd = document.createElement('td');
+        boxesTd.textContent = [...checkboxes].map(el => el.value).join(', ');
+        row.appendChild(boxesTd);
+
+        table.appendChild(row);
+    }    
+    
+    element.appendChild(table);
+}
