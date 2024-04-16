@@ -1,11 +1,19 @@
+let count = 1;
+
 let beverage = document.querySelector(".beverage")
 beverage.querySelector('textarea[name="user-input"]')
     .addEventListener('input', function() {
         beverage.querySelector('.user-output').innerHTML = highlightKeywords(this.value);
     });
 
+beverage.querySelector(".remove-button")
+    .addEventListener("click", () => {
+        if(document.querySelectorAll(".beverage").length > 1){
+            beverage.remove();
+            // count--;
+        }
+    });
 
-let count = 1;
 document.querySelector(".add-button").addEventListener("click", () => {
     count++;
     let forms = document.querySelectorAll(".beverage");
@@ -24,11 +32,10 @@ document.querySelector(".add-button").addEventListener("click", () => {
 
     let removeButton = newForm.querySelector(".remove-button");
     removeButton.addEventListener("click", () => {
-        if(count > 1){
+        if (document.querySelectorAll(".beverage").length > 1) {
             newForm.remove();
-            count--;
+            // count--;
         }
-
     });
     forms[forms.length - 1].after(newForm);
 });
@@ -57,7 +64,8 @@ document.querySelector(".submit-button")
     .addEventListener('click',
         (e) => {
             e.preventDefault();
-            modalContent.textContent = `Заказ принят! Вы заказали ${count} ${declineDrink(count)}.`;
+            const existringBeverages = document.querySelectorAll(".beverage").length;
+            modalContent.textContent = `Заказ принят! Вы заказали ${existringBeverages} ${declineDrink(existringBeverages)}.`;
             createTable(modalContent);
             modal.style.display = 'block';
             overlay.style.display = 'block';

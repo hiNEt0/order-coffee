@@ -1,4 +1,5 @@
 .beverage {
+    position: relative;
     border: 1px solid #eee;
     margin: 15px 0;
     padding: 15px;
@@ -45,14 +46,14 @@
     border-radius: 5px;
 }
 
-/* .remove-button {
+.remove-button {
     position: absolute;
     top: 20px;
     right: 15px;
     font-size: 16px;
     padding: 7px 15px;
     border-radius: 5px;
-} */
+}
 
  
 .modal {
