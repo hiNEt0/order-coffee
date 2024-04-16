@@ -1,3 +1,10 @@
+let beverage = document.querySelector(".beverage")
+beverage.querySelector('textarea[name="user-input"]')
+    .addEventListener('input', function() {
+        beverage.querySelector('.user-output').innerHTML = highlightKeywords(this.value);
+    });
+
+
 let count = 1;
 document.querySelector(".add-button").addEventListener("click", () => {
     count++;
@@ -5,11 +12,10 @@ document.querySelector(".add-button").addEventListener("click", () => {
     let newForm = forms[forms.length - 1].cloneNode(true);
     newForm.querySelector("h4").innerHTML = `Напиток №${count}`;
 
-    let userInput = newForm.querySelector('.user-input');
+    let userInput = newForm.querySelector('textarea[name="user-input"]');
     let userOutput = newForm.querySelector('.user-output');
-    userInput.addEventListener('change  ', function() {
-        const userInput = "hello";
-        newOutput.innerHTML = highlightKeywords(userInput);
+    userInput.addEventListener('input', function() {
+        userOutput.innerHTML = highlightKeywords(this.value);
     });
 
     for (let radio of newForm.querySelectorAll("input[type=radio]")) {
